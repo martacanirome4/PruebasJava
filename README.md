@@ -8,6 +8,7 @@ Para compilar y ejecutar el proyecto, al ser un proyecto Maven tan solo es neces
 - Clonar el repositorio en su sistema
 - Abrir una terminal y navegar hasta el directorio del proyecto
 - Ejecuta el comando 'mvn test'
+
 Automáticamente, el proyecto será compilado y los tests serán ejecutados, mostrando por pantalla aquellos que no hayan sido pasados con éxito
 
 ## Autor
