@@ -24,9 +24,10 @@ class RecursiveFunctionsTest {
         assertEquals(10, sumaActual);
     }
 
+    @Test
     void FactorialNegativeInput() {
         Exception exception = assertThrows(IllegalArgumentException.class, () ->
-                RecursiveFunctions.SumaN(-2));
+                RecursiveFunctions.Factorial(-2));
         assertEquals(exception.getMessage(), "El número debe ser mayor o igual que 0");
     }
 
@@ -40,6 +41,20 @@ class RecursiveFunctionsTest {
     void FactorialPositivo() {
         int factorialActual = RecursiveFunctions.Factorial(4);
         assertEquals(24, factorialActual);
+    }
+
+    @Test
+    void PotenciaBaseNegativa() {
+        Exception exception = assertThrows(IllegalArgumentException.class, () ->
+                RecursiveFunctions.Potencia(-2, 1));
+        assertEquals(exception.getMessage(), "El número debe ser mayor o igual que 0");
+    }
+
+    @Test
+    void PotenciaExponenteNegativo() {
+        Exception exception = assertThrows(IllegalArgumentException.class, () ->
+                RecursiveFunctions.Potencia(1, -2));
+        assertEquals(exception.getMessage(), "El valor del exponente debe ser mayor o igual que 0");
     }
 
     @Test
@@ -69,6 +84,14 @@ class RecursiveFunctionsTest {
     }
 
     @Test
+    void CalcularMediaVacio() {
+        List<Integer> numbers = Arrays.asList();
+        Exception exception = assertThrows(IllegalArgumentException.class, () ->
+                RecursiveFunctions.CalcularMedia(numbers));
+        assertEquals(exception.getMessage(), "La lista no puede estar vacía");
+    }
+
+    @Test
     void CalcularMedia() {
         List<Integer> numbers = Arrays.asList(1, 2, 3, 4);
         int calcularMediaActual = RecursiveFunctions.CalcularMedia(numbers);
@@ -84,10 +107,31 @@ class RecursiveFunctionsTest {
     }
 
     @Test
+    void CalcularDesviacionEstandarTamanio1() {
+        List<Integer> numbers = Arrays.asList(4);
+        double desviacionEstandarActual = RecursiveFunctions.CalcularDesviacionEstandar(numbers);
+        assertEquals(0, desviacionEstandarActual);
+
+    }
+
+    @Test
     void CalcularDesviacionEstandar() {
         List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5);
         double desviacionEstandarActual = RecursiveFunctions.CalcularDesviacionEstandar(numbers);
         assertEquals(1.5811388300841898, desviacionEstandarActual);
+    }
+
+    @Test
+    void SumEvenNegativo() {
+        Exception exception = assertThrows(IllegalArgumentException.class, () ->
+                RecursiveFunctions.SumEven(-2));
+        assertEquals(exception.getMessage(), "El número debe ser mayor o igual que 0");
+    }
+
+    void SumEvenCero() {
+        Exception exception = assertThrows(IllegalArgumentException.class, () ->
+                RecursiveFunctions.SumEven(0));
+        assertEquals(exception.getMessage(), "El número debe ser mayor o igual que 0");
     }
 
     @Test

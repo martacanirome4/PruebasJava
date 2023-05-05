@@ -48,7 +48,7 @@ public class RecursiveFunctions {
             throw new IllegalArgumentException("El número debe ser mayor o igual que 0");
         }
         if (p < 0) {
-            throw new IllegalArgumentException("El valor de la potencia debe ser mayor o igual que 0");
+            throw new IllegalArgumentException("El valor del exponente debe ser mayor o igual que 0");
         }
         if (p == 0) {
             return 1;
