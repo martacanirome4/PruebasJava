@@ -242,6 +242,7 @@ public class RecursiveFunctions {
      * @param n - número entero
      * @return - el elemento n de la sucesión de Fibonacci
      */
+    // Complejidad logarítmica
     public static double Fibonacci(int n) {
         if (n <= 0) {
             throw new IllegalArgumentException("El número debe ser mayor o igual que 0");
@@ -264,9 +265,11 @@ public class RecursiveFunctions {
             throw new IllegalArgumentException("El número debe ser mayor o igual que 0");
         }
         if (n == 1 || n == 2) {
-            return 1.0;
+            return 1;
         } else {
-            return Fibonacci(n-1) / Fibonacci(n-2);
+            double fn1 = Fibonacci(n-1);
+            double fn2 = Fibonacci(n-2);
+            return fn1 / fn2;
         }
     }
 

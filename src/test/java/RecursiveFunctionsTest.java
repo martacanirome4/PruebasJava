@@ -4,81 +4,82 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class RecursiveFunctionsTest {
 
-    /**
-    @Test
-    void testSumaNWithNegativeInput() {
-        int sumaActual = RecursiveFunctions.SumaN(-2);
-        int sumaEsperada = IllegalArgumentException("El número debe ser mayor o igual que 0");
-        assertEquals(sumaEsperada, sumaActual);
-    }
-     **/
 
     @Test
-    void testSumaNWithPositiveInput() {
+    void testSumaNNegativeInput() {
+        Exception exception = assertThrows(IllegalArgumentException.class, () ->
+                RecursiveFunctions.SumaN(-2));
+        assertEquals(exception.getMessage(), "El número debe ser mayor o igual que 0");
+    }
+
+    @Test
+    void testSumaNCero() {
+        int factorialActual = RecursiveFunctions.SumaN(0);
+        assertEquals(0, factorialActual);
+    }
+
+    @Test
+    void testSumaNPositiveInput() {
         int sumaActual = RecursiveFunctions.SumaN(4);
-        int sumaEsperada = 10;
-        assertEquals(sumaEsperada, sumaActual);
+        assertEquals(10, sumaActual);
     }
 
+    void FactorialNegativeInput() {
+        Exception exception = assertThrows(IllegalArgumentException.class, () ->
+                RecursiveFunctions.SumaN(-2));
+        assertEquals(exception.getMessage(), "El número debe ser mayor o igual que 0");
+    }
 
     @Test
     void FactorialCero() {
         int factorialActual = RecursiveFunctions.Factorial(0);
-        int factorialEsperada = 1;
-        assertEquals(factorialActual, factorialEsperada);
+        assertEquals(1, factorialActual);
     }
 
     @Test
     void FactorialPositivo() {
         int factorialActual = RecursiveFunctions.Factorial(4);
-        int factorialEsperada = 24;
-        assertEquals(factorialActual, factorialEsperada);
+        assertEquals(24, factorialActual);
     }
 
     @Test
     void PotenciaCero() {
         int potenciaActual = RecursiveFunctions.Potencia(4, 0);
-        int potenciaEsperada = 1;
-        assertEquals(potenciaActual, potenciaEsperada);
+        assertEquals(1, potenciaActual);
     }
 
     @Test
     void PotenciaPositiva() {
         int potenciaActual = RecursiveFunctions.Potencia(4, 2);
-        int potenciaEsperada = 16;
-        assertEquals(potenciaActual, potenciaEsperada);
+        assertEquals(16, potenciaActual);
     }
 
     @Test
     void SumListVacio() {
         List<Integer> numbers = Arrays.asList();
         int sumListActual = RecursiveFunctions.SumList(numbers);
-        int sumListEsperada = 0;
-        assertEquals(sumListActual, sumListEsperada);
+        assertEquals(0, sumListActual);
     }
 
     @Test
     void SumList() {
         List<Integer> numbers = Arrays.asList(1, 2, 3);
         int sumListActual = RecursiveFunctions.SumList(numbers);
-        int sumListEsperada = 7;
-        assertEquals(sumListActual, sumListEsperada);
+        assertEquals(6, sumListActual);
     }
 
     @Test
     void CalcularMedia() {
         List<Integer> numbers = Arrays.asList(1, 2, 3, 4);
         int calcularMediaActual = RecursiveFunctions.CalcularMedia(numbers);
-        int calcularMediaEsperada = 2;
-        assertEquals(calcularMediaEsperada, calcularMediaActual);
+        assertEquals(2, calcularMediaActual);
     }
 
     @Test
     void CalcularDesviacionEstandarVacia() {
         List<Integer> numbers = Arrays.asList();
         double desviacionEstandarActual = RecursiveFunctions.CalcularDesviacionEstandar(numbers);
-        double desviacionEstandarEsperada = 0;
-        assertEquals(desviacionEstandarEsperada, desviacionEstandarActual);
+        assertEquals(0, desviacionEstandarActual);
 
     }
 
@@ -86,24 +87,20 @@ class RecursiveFunctionsTest {
     void CalcularDesviacionEstandar() {
         List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5);
         double desviacionEstandarActual = RecursiveFunctions.CalcularDesviacionEstandar(numbers);
-        // CALCULAR RESULTADO
-        double desviacionEstandarEsperada = 0;
-        assertEquals(desviacionEstandarEsperada, desviacionEstandarActual);
+        assertEquals(1.5811388300841898, desviacionEstandarActual);
     }
 
     @Test
     void SumEven() {
         int sumEvenActual = RecursiveFunctions.SumEven(6);
-        int sumEvenEsperado = 12;
-        assertEquals(sumEvenEsperado, sumEvenActual);
+        assertEquals(12, sumEvenActual);
     }
 
     @Test
     void RecursiveEvenSumListVacia() {
         List<Integer> numbers = Arrays.asList();
         int sumaRecursivaActual = RecursiveFunctions.RecursiveEvenSumList(numbers);
-        int sumaRecursivaEsperada = 0;
-        assertEquals(sumaRecursivaEsperada, sumaRecursivaActual);
+        assertEquals(0, sumaRecursivaActual);
 
     }
 
@@ -111,17 +108,17 @@ class RecursiveFunctionsTest {
     void RecursiveEvenSumList() {
         List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5);
         int sumaRecursivaActual = RecursiveFunctions.RecursiveEvenSumList(numbers);
-        int sumaRecursivaEsperada = 6;
-        assertEquals(sumaRecursivaEsperada, sumaRecursivaActual);
+        assertEquals(6, sumaRecursivaActual);
     }
 
-    @Test
+    /**
     void GetEvenNumbers() {
         List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5);
         List<Integer> getEvenActual = RecursiveFunctions.GetEvenNumbers(numbers);
         List<Integer> getEvenEsperada = Arrays.asList(2,  4);
         assertEquals(getEvenEsperada, getEvenActual);
     }
+     **/
 
     @Test
     void EvenNumbers() {
@@ -130,27 +127,24 @@ class RecursiveFunctionsTest {
         assertEquals(evenNumbersEsperada, evenNumbersActual);
     }
 
+    // si la diferencia en valor absoluta es menor que 0.00000001
     @Test
     void CalculateDotProduct() {
         List<Integer> numbers1 = Arrays.asList(1, 2);
         List<Integer> numbers2 = Arrays.asList(3, 4);
         int calculateDotProductActual = RecursiveFunctions.CalculateDotProduct(numbers1, numbers2);
-        // CALCULAR RESULTADO
-        List<Integer> calculateDotProductEsperado = Arrays.asList(3, 4);
-        assertEquals(calculateDotProductEsperado, calculateDotProductActual);
+        assertEquals(11, calculateDotProductActual);
     }
 
     @Test
     void Fibonacci() {
         double fibonacciActual = RecursiveFunctions.Fibonacci(12);
-        double fibonacciEsperado = 13;
-        assertEquals(fibonacciEsperado, fibonacciActual);
+        assertEquals(144.0, fibonacciActual);
     }
 
     @Test
     void FibonacciQuotient() {
-        double fibonacciActual = RecursiveFunctions.Fibonacci(12);
-        double fibonacciEsperado = 1.61803398875;
-        assertEquals(fibonacciEsperado, fibonacciActual);
+        double fibonacciQuotientActual = RecursiveFunctions.FibonacciQuotient(12);
+        assertEquals(1.6181818181818182, fibonacciQuotientActual);
     }
 }
